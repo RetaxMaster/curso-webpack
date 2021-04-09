@@ -8,7 +8,8 @@ module.exports = {
     entry: "./src/index.js",
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "main.js"
+        filename: "main.js",
+        assetModuleFilename: "assets/images/[hash][ext][query]"
     },
 
     resolve: {
@@ -35,6 +36,20 @@ module.exports = {
             {
                 test: /\.png/,
                 type: "asset/resource",
+            },
+            {
+                test: /\.(woff|woff2)$/,
+                use: {
+                    loader: "url-loader",
+                    options: {
+                        limit: 10000,
+                        mimeType: "application/font-woff",
+                        name: "[name].[ext]",
+                        outputPath: "./assets/fonts/",
+                        publicPath: "./assets/fonts/",
+                        esModule: false
+                    }
+                }
             }
         ]
     },
