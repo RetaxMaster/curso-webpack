@@ -16,6 +16,8 @@ module.exports = {
 
     mode: "development",
 
+    watch: true,
+
     resolve: {
         extensions: [".js"],
         alias: {
